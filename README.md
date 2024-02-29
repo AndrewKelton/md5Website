@@ -5,7 +5,7 @@ The passwords are saved as a one way md5 hash and saved into the SQL database 'l
 To Build:
   1. Download files
   2. Follow download instructions on "github.com/mattn/go-sqlite3" to get sqlite3 driver
-  3. Add pkg to folder with md5Login files
+  3. Add pkg to folder with md5Website files
   4. Navigate to folder
   5. In terminal run:
       export GO111MODULE=on
