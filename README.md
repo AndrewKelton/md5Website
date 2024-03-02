@@ -7,7 +7,11 @@ Updates:
 -
   Added an admin profile with admin capabilities in the website
   Admin responsibilities do not require you to login as admin yet
-  You just need to navigate to /admin page.
+  
+  You just need to navigate to /admin page
+  
+  Put all user defined functions into a file called functions.go
+  So it is easier to call main
 
   Able to delete users in the database from the admin page and view database
 
@@ -18,9 +22,13 @@ To Build:
   3. Add pkg to folder with md5Website files
   4. Navigate to folder
   5. In terminal run:
+
       export GO111MODULE=on
+     
       go get github.com/mattn/go-sqlite3
-      go run main.go login.go newProf.go admintable.go
+     
+      go run main.go functions.go
+     
   6. Type 'http://127.0.0.1:8081' into web browser
   7. Input data and view SQL database changing
 
