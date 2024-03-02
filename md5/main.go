@@ -6,6 +6,8 @@ import (
     "net/http"
     "text/template"
 	"fmt"
+	//"strings"
+	// _ "github.com/AndrewKelton/functions"
 )
 
 type User struct {
@@ -30,7 +32,9 @@ func main() {
 	http.HandleFunc("/newaccount", func(res http.ResponseWriter, req *http.Request) {
         NewAcc(res, req, &user)
     })
-	http.HandleFunc("/admin", AdminAccess)
+	http.HandleFunc("/admin", func(res http.ResponseWriter, req *http.Request) {
+        AdminAccess(res, req, &user)
+    })
 	http.HandleFunc("/admindelete", func(res http.ResponseWriter, req *http.Request) {
         DeleteAcc(res, req, &user)
 		Table()
@@ -83,16 +87,34 @@ func RegisAcc(res http.ResponseWriter, req *http.Request, user *User) {
     serveHTML(res, "frontpage/register.html", user)
 }
 
-func AdminAccess(res http.ResponseWriter, req *http.Request) {
+func AdminAccess(res http.ResponseWriter, req *http.Request, u *User) {
 
 	err := req.ParseForm()
     if err != nil {
         log.Fatal(err)
         return
     }
+	if (u.Username != "admin" && u.Password != "admin") {
+		http.Error(res, "Access Denied", http.StatusForbidden)
+		log.Println("Someone tried logging in as admin through the browser!")
+		return
+	}
+
 	Table()
 	serveHTML(res, "frontpage/admin.html", nil) // Serve login.html file
 }
+
+// func handleSpecial(w http.ResponseWriter, r *http.Request) {
+// 	// Check if the request URL contains '/something'
+// 	if strings.Contains(r.URL.Path, "/admin") {
+// 		// Redirect to a different page or display an error message
+// 		http.Error(w, "Access Denied", http.StatusForbidden)
+// 		return
+// 	}
+
+// 	// Serve the special HTML file
+// 	http.ServeFile(w, r, "index.html")
+// }
 
 func serveHTML(res http.ResponseWriter, filename string, data interface{}) {
 	file, err := os.ReadFile(filename)
