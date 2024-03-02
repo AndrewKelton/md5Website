@@ -30,6 +30,11 @@ func main() {
 	http.HandleFunc("/newaccount", func(res http.ResponseWriter, req *http.Request) {
         NewAcc(res, req, &user)
     })
+	http.HandleFunc("/admin", AdminAccess)
+	http.HandleFunc("/admindelete", func(res http.ResponseWriter, req *http.Request) {
+        DeleteAcc(res, req, &user)
+		Table()
+    })
 
     if err := http.ListenAndServe(":8081", nil); err != nil {
         log.Fatal(err)
@@ -58,9 +63,9 @@ func LoginSuccess(res http.ResponseWriter, req *http.Request, user *User) {
     serveHTML(res, "frontpage/account.html", user)
 }
 
-func LoginFailed(res http.ResponseWriter, req *http.Request) {
-	serveHTML(res, "frontpage/loginfail.html", nil) // Serve login.html file
-}
+// func LoginFailed(res http.ResponseWriter, req *http.Request) {
+// 	serveHTML(res, "frontpage/loginfail.html", nil) // Serve login.html file
+// }
 
 func RegisAcc(res http.ResponseWriter, req *http.Request, user *User) {
 	// Call to ParseForm makes form fields available.
@@ -76,6 +81,17 @@ func RegisAcc(res http.ResponseWriter, req *http.Request, user *User) {
     // }
 
     serveHTML(res, "frontpage/register.html", user)
+}
+
+func AdminAccess(res http.ResponseWriter, req *http.Request) {
+
+	err := req.ParseForm()
+    if err != nil {
+        log.Fatal(err)
+        return
+    }
+	Table()
+	serveHTML(res, "frontpage/admin.html", nil) // Serve login.html file
 }
 
 func serveHTML(res http.ResponseWriter, filename string, data interface{}) {
@@ -123,13 +139,16 @@ func GetUser(res http.ResponseWriter, req *http.Request, u *User) {
 	GetData(u, acc.Username, acc.Password)
 
 	fmt.Printf("Received user: %s, pass: %s\n", acc.Username, acc.Password)
-	if Login(acc.Username, acc.Password) == true {
+	if Login(acc.Username, acc.Password) == true && acc.Username != "admin"{
 		fmt.Fprintf(res, "LoginSuccess")
 		//LoginSuccess(res, req)
 		return
     } else if Login(acc.Username, acc.Password) == false{
         // Send a response to the client to indicate failed login
         fmt.Fprintf(res, "LoginFailed")
+		return
+	} else if Login(acc.Username, acc.Password) == true && acc.Username == "admin" {
+		fmt.Fprintf(res, "AdminAccess")
 		return
 	}
 }
@@ -152,6 +171,27 @@ func NewAcc(res http.ResponseWriter, req *http.Request, u *User) {
 		return
 	} else if Newpro(u.Username, u.Password) == false {
 		fmt.Fprintf(res, "Error")
+		return
+	}
+}
+
+func DeleteAcc(res http.ResponseWriter, req *http.Request, u *User) {
+
+	err := req.ParseForm()
+    if err != nil {
+        log.Fatal(err)   
+		return         
+    }
+
+	u.Username = req.Form.Get("username")
+
+	fmt.Printf("Received user: %s\n", u.Username)
+	
+	if Delete(u.Username) == true {
+		fmt.Fprintf(res, "204")
+		return
+	} else {
+		fmt.Fprintf(res, "404")
 		return
 	}
 }
