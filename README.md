@@ -28,3 +28,9 @@ ERRORS
 -
   1. Passwords are inputted as type "text" instead of type "password" in html script. Still trying to figure out how to
   change a type "password" to a type "text" before returning it the server side.
+
+Files Created with AI
+-
+  Most but not all of the JavaScript code embedded in the html files are written by AI
+  admintable.go is written by AI given the prompts of my pervious go code opening the db
+  
