@@ -6,7 +6,8 @@ The passwords are saved as a one way md5 hash and saved into the SQL database 'l
 Updates:
 -
   Added an admin profile with admin capabilities in the website
-  Admin responsibilities do not require you to login as admin yet
+  Admin has been updated to require the username and password to 
+  be "admin" "admin" to be able to use /admin page
   
   You just need to navigate to /admin page
   
