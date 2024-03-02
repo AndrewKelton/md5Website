@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>Admin</title>
+</head>
+    <body>
+        <h1>Admin Account</h1>
+        <b>Delete Account</b>
+        <form id="deleteForm" action="/admindelete" method="post">
+            <label for="username">Username</label><br>
+            <input type="text" id="username" name="username" required><br>
+        </form>
+        <div id="message"></div>
+        <b>Click button to view new database</b>
+        <button onclick="refreshPage()">Refresh</button>
+        <script>
+            document.getElementById("deleteForm").addEventListener("submit", function(event) {
+                event.preventDefault(); // Prevent default form submission
+        
+                //document.getElementByID("password").type = "text";
+        
+                var username = document.getElementById("username").value;
+            
+                // Send form data to the server
+                fetch('/admindelete', {
+                    method: 'POST',
+                    body: new URLSearchParams({
+                        'username': username,
+                    })
+                })
+                .then(response => response.text())
+                .then(data => {
+                    if (data === "204") {
+                        // If the response indicates successful login, redirect to the account page
+                        document.getElementById("message").innerText = "Account Successfully Deleted"
+                    } else {
+                        // If the response indicates failed login, display a message
+                        document.getElementById("message").innerText = "Error Deleting Account";
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+            });
+
+            function refreshPage() {
+                // Reload the page
+                location.reload();
+            }
+            </script>
+    </body>
+<html><head><title>Table</title></head><body><table border='1'><tr><th>Username</th><th>Password</th></tr><tr><td>admin</td><td>21232f297a57a5a743894a0e4a801fc3</td></tr><tr><td>1234</td><td>81dc9bdb52d04dc20036dbd8313ed055</td></tr><tr><td>sdnfaasd</td><td>96703400169141436bc769418a3577e5</td></tr>
