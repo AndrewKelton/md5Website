@@ -9,10 +9,8 @@ Updates:
   
   Admin has been updated to require the username and password to 
   
-  be "admin" "admin" to be able to use /admin page
+  Be "admin" "admin" to be able to use /admin page
 
-  
-  You just need to navigate to /admin page
 
   
   Put all user defined functions into a file called functions.go
