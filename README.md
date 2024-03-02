@@ -6,13 +6,18 @@ The passwords are saved as a one way md5 hash and saved into the SQL database 'l
 Updates:
 -
   Added an admin profile with admin capabilities in the website
+  
   Admin has been updated to require the username and password to 
+  
   be "admin" "admin" to be able to use /admin page
+
   
   You just need to navigate to /admin page
+
   
   Put all user defined functions into a file called functions.go
   So it is easier to call main
+
 
   Able to delete users in the database from the admin page and view database
 
