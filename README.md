@@ -34,7 +34,7 @@ To Build:
       go run main.go functions.go
      
   6. Type 'http://127.0.0.1:8081' into web browser
-  7. Input data and view SQL database changing
+  7. Input data in forms in web app and view SQL database changing
 
 ERRORS
 -
