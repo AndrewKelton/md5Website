@@ -46,5 +46,5 @@ Files Created with AI
 -
   Most but not all of the JavaScript code embedded in the html files are written by AI
   
-  'admintable.go' is written by AI given the prompts of my previous go code opening the db
+  Table function in 'functions.go' is written partly by AI giving the prompts of my previous Go functions with SQL 
   
