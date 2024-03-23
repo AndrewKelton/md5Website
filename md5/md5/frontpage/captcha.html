@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<head>
+    <title>Captcha</title>
+</head>
+<body>
+    <h1 style="text-align: center">Captcha</h1>
+
+    <div style="text-align: center" id="cap">{{.Captcha}}</div>
+
+    <form style="text-align: center" id="captcha" action="/captcha" method="post">
+        <label style="text-align: center" form="captcha1">Enter the numbers you see</label><br>
+        <input style="text-align: center" type="text" id="captcha1" name="captcha1" required><br>
+        <input type="submit" value="Captcha">
+    </form>
+
+    <div id="message"></div>
+    <script>
+        document.getElementById("captcha").addEventListener("submit", function(event) {
+        event.preventDefault(); // Prevent default form submission
+
+        var captcha = document.getElementById("captcha1").value;
+
+        // Send form data to the server
+        fetch('/verify', {
+            method: 'POST',
+            body: new URLSearchParams({
+                'captcha1': captcha,
+            })
+        })
+        .then(response => response.text())
+        .then(data => {
+            if (data === "204") {
+                // If the response indicates successful login, redirect to the account page
+                window.location.href = "/home";
+            } else if (data == "404"){
+                // If the response indicates failed login, display a message
+                document.getElementById("message").innerText = "Captcha Failed";
+            } else {
+                window.location.href = "/";
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    });
+    </script>
+</body>
