@@ -29,7 +29,7 @@ To Build:
      
       go run main.go functions.go
      
-  6. Type 'http://127.0.0.1:8081' into web browser
+  6. Type 'http://127.0.0.1:40' into web browser (or whatever port you are using)
   7. Input data in forms in web app and view SQL database changing
 
 ERRORS
