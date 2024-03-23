@@ -1,8 +1,11 @@
-Simple Login and Sign Up Website
+My Website
 -
 
 The passwords are saved as a one way md5 hash and saved into the SQL database 'lamp.db'.
+
 Users can only navigate the website when logged in and successfuly completing captcha.
+
+You can learn a little about me and view my first website in Go
 
 Updates:
 -
