@@ -37,7 +37,9 @@ ERRORS
 -
   1. Passwords are inputted as type "text" instead of type "password" in html script. Still trying to figure out how to
   change a type "password" to a type "text" before returning it the server side.
-  2. Issue with refreshing page in admin account
+  2. Issue with refreshing page in admin account and deleting accounts. Account will
+     be deleted but will throw 'Error deleting account'. Will need to log back into
+     admin account to view changes.
 
 Files Created with AI
 -
