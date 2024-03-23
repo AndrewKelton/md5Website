@@ -19,7 +19,7 @@ To Build:
 -
   1. Download files
   2. Follow download instructions on "github.com/mattn/go-sqlite3" to get sqlite3 driver
-  3. Add pkg to folder with md5Website files
+  3. Add pkg to folder with myWebsite/md5/md5 files
   4. Navigate to folder
   5. In terminal run:
 
