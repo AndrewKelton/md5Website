@@ -2,22 +2,15 @@ Simple Login and Sign Up Website
 -
 
 The passwords are saved as a one way md5 hash and saved into the SQL database 'lamp.db'.
+Users can only navigate the website when logged in and successfuly completing captcha.
 
 Updates:
 -
-  Added an admin profile with admin capabilities in the website
+  Entirely new UI
+
+  Users can go to multiple pages
   
-  Admin has been updated to require the username and password to 
-  
-  Be "admin" "admin" to be able to use /admin page
-
-
-  
-  Put all user defined functions into a file called functions.go
-  So it is easier to call main
-
-
-  Able to delete users in the database from the admin page and view database
+  Users gain permissions based on logging in and captcha
 
 To Build:
 -
