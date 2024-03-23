@@ -15,6 +15,8 @@ Updates:
   
   Users gain permissions based on logging in and captcha
 
+  Automate terminal needs by using shell script to run code
+
 To Build:
 -
   1. Download files
@@ -23,14 +25,13 @@ To Build:
   4. Navigate to folder
   5. In terminal run:
 
-      export GO111MODULE=on
+     chmod +x run.sh
+
+     ./run.sh
      
-      go get github.com/mattn/go-sqlite3
-     
-      go run main.go functions.go
-     
-  6. Type 'http://127.0.0.1:40' into web browser (or whatever port you are using)
-  7. Input data in forms in web app and view SQL database changing
+  5. Type 'http://127.0.0.1:40' into web browser (or whatever port you are using)
+  6. Input data in forms in web app and view SQL database changing
+  7. Navigate website
 
 ERRORS
 -
