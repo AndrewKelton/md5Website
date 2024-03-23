@@ -1,8 +1,3 @@
-TO DO:
-add a create profile function
-add a delete profile function
-create a admin profile - allows to view entire database
-create an if loginsuccessful not able to go back to index.html
 
 Commands:
 export GO111MODULE=on
