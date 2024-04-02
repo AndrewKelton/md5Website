@@ -25,6 +25,8 @@ To Build:
   4. Navigate to folder
   5. In terminal run:
 
+     go build main.go (you may also need to add requirements to go.mod or go.sum)
+
      chmod +x run.sh
 
      ./run.sh
